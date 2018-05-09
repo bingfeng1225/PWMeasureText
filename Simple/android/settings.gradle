@@ -1,0 +1,5 @@
+rootProject.name = 'Simple'
+include ':react-native-peiwen-measure-text'
+project(':react-native-peiwen-measure-text').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-peiwen-measure-text/android')
+
+include ':app'

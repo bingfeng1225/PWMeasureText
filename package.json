@@ -1,0 +1,23 @@
+{
+  "name": "react-native-peiwen-measure-text",
+  "version": "1.0.0",
+  "description": "Measure text height without laying it out.",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bingfeng1225/react-native-peiwen-measure-text.git"
+  },
+  "keywords": [
+    "react-component",
+    "react-native",
+    "ios",
+    "android",
+    "measure",
+    "text",
+    "height"
+  ],
+  "author": "peiwen",
+  "license": "MIT",
+  "homepage": "https://github.com/bingfeng1225/react-native-peiwen-measure-text#readme"
+}
