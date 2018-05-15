@@ -27,13 +27,13 @@ export default class App extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
-            height: 0
+            height: []
         };
     }
 
 
     async componentWillMount(){
-        let height = await PWMeasureText.measure({fontSize:20});
+        let height = await PWMeasureText.measure([20,30]);
         this.setState({height:height});
     }
 
