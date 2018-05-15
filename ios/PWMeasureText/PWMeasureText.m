@@ -16,29 +16,25 @@
 #import "PWMeasureText.h"
 
 @implementation PWMeasureText
+
+RCT_EXPORT_MODULE();
+
 - (dispatch_queue_t)methodQueue
 {
     return dispatch_get_main_queue();
 }
 
-RCT_EXPORT_MODULE();
-
-RCT_EXPORT_METHOD(measure:(NSDictionary *)options
+RCT_EXPORT_METHOD(measure:(NSArray *)array
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
-    if ([options objectForKey:@"fontSize"] == nil) {
-        reject(@"invalid_fontSize", @"missing required fontSize property", nil);
-        return;
+    NSMutableArray* results = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < array.count; i++) {
+        UIFont * font = [UIFont systemFontOfSize: [[array objectAtIndex:i] floatValue]];
+        CGRect rect = [@" " boundingRectWithSize:CGSizeMake(MAXFLOAT,MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin |NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:font} context:nil];
+        [results addObject:@(ceil(rect.size.height))];
     }
-    
-    CGSize size = CGSizeMake(MAXFLOAT,MAXFLOAT);
-    
-    UIFont * font = [UIFont systemFontOfSize: [RCTConvert CGFloat:options[@"fontSize"]]];
-    
-    CGRect rect = [@" " boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin |NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:font} context:nil];
-    
-    resolve(@(ceil(rect.size.height)));
+    resolve(results);
 }
 
 @end
