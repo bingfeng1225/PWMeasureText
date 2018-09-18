@@ -10,7 +10,7 @@ android {
     buildToolsVersion project.hasProperty('buildToolsVersion') ? project.buildToolsVersion : DEFAULT_BUILD_TOOLS_VERSION
 
     defaultConfig {
-        minSdkVersion project.hasProperty('minSdkVersion') ? project.buildToolsVersion : DEFAULT_MIN_SDK_VERSION
+        minSdkVersion project.hasProperty('minSdkVersion') ? project.minSdkVersion : DEFAULT_MIN_SDK_VERSION
         targetSdkVersion project.hasProperty('targetSdkVersion') ? project.targetSdkVersion : DEFAULT_TARGET_SDK_VERSION
         versionCode 1
         versionName "1.0"
